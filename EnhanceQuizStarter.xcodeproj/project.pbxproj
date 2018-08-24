@@ -13,6 +13,9 @@
 		972A72B82056F06C0059EF4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 972A72B72056F06C0059EF4A /* Assets.xcassets */; };
 		972A72BB2056F06C0059EF4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 972A72B92056F06C0059EF4A /* LaunchScreen.storyboard */; };
 		972A72C32056F0E40059EF4A /* GameSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 972A72C22056F0E40059EF4A /* GameSound.wav */; };
+		FACB76DF2130464200F09C3B /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB76DE2130464200F09C3B /* Question.swift */; };
+		FACB76E12130468100F09C3B /* QuizManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB76E02130468100F09C3B /* QuizManager.swift */; };
+		FACB76E3213046A000F09C3B /* TheQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB76E2213046A000F09C3B /* TheQuiz.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		972A72BA2056F06C0059EF4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		972A72BC2056F06C0059EF4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		972A72C22056F0E40059EF4A /* GameSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GameSound.wav; sourceTree = "<group>"; };
+		FACB76DE2130464200F09C3B /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		FACB76E02130468100F09C3B /* QuizManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizManager.swift; sourceTree = "<group>"; };
+		FACB76E2213046A000F09C3B /* TheQuiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheQuiz.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,9 @@
 			children = (
 				972A72B02056F06C0059EF4A /* AppDelegate.swift */,
 				972A72B22056F06C0059EF4A /* ViewController.swift */,
+				FACB76DE2130464200F09C3B /* Question.swift */,
+				FACB76E02130468100F09C3B /* QuizManager.swift */,
+				FACB76E2213046A000F09C3B /* TheQuiz.swift */,
 				972A72B42056F06C0059EF4A /* Main.storyboard */,
 				972A72B72056F06C0059EF4A /* Assets.xcassets */,
 				972A72B92056F06C0059EF4A /* LaunchScreen.storyboard */,
@@ -140,7 +149,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FACB76E12130468100F09C3B /* QuizManager.swift in Sources */,
+				FACB76DF2130464200F09C3B /* Question.swift in Sources */,
 				972A72B32056F06C0059EF4A /* ViewController.swift in Sources */,
+				FACB76E3213046A000F09C3B /* TheQuiz.swift in Sources */,
 				972A72B12056F06C0059EF4A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
