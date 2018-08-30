@@ -41,6 +41,7 @@ class ViewController: UIViewController {
         loadGameStartSound()
         playGameStartSound()
         displayQuestion()
+        questionGenerator.createQuestionPool()
     }
     
     // MARK: - Helpers
