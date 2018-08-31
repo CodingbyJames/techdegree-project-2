@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     
     // MARK: - Properties
     
-    let questionsPerRound = 4
+    let questionsPerRound = 5
     var questionsAsked = 0
     var correctQuestions = 0
     var indexOfSelectedQuestion = 0
@@ -31,17 +31,18 @@ class ViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var questionField: UILabel!
-    @IBOutlet weak var trueButton: UIButton!
-    @IBOutlet weak var falseButton: UIButton!
+    @IBOutlet weak var button1: UIButton!
+    @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         loadGameStartSound()
         playGameStartSound()
-        displayQuestion()
         questionGenerator.createQuestionPool()
+        displayQuestion()
+        
     }
     
     // MARK: - Helpers
@@ -57,16 +58,18 @@ class ViewController: UIViewController {
     }
     
     func displayQuestion() {
-        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: trivia.count)
-        let questionDictionary = trivia[indexOfSelectedQuestion]
-        questionField.text = questionDictionary["Question"]
+        questionField.text = questionGenerator.gameQuestions[indexOfSelectedQuestion].question
+        button1.setTitle(questionGenerator.gameQuestions[indexOfSelectedQuestion].possibleAnswers[1], for: UIControlState.normal)
+        print(questionGenerator.gameQuestions[indexOfSelectedQuestion].possibleAnswers[1])
+        button2.setTitle(questionGenerator.gameQuestions[indexOfSelectedQuestion].possibleAnswers[2], for: UIControlState.normal)
+        print(questionGenerator.gameQuestions[indexOfSelectedQuestion].possibleAnswers[2])
         playAgainButton.isHidden = true
     }
     
     func displayScore() {
-        // Hide the answer uttons
-        trueButton.isHidden = true
-        falseButton.isHidden = true
+        // Hide the answer buttons
+        button1.isHidden = true
+        button2.isHidden = true
         
         // Display play again button
         playAgainButton.isHidden = false
@@ -80,8 +83,17 @@ class ViewController: UIViewController {
             displayScore()
         } else {
             // Continue game
+            indexOfSelectedQuestion += 1
             displayQuestion()
         }
+    }
+    func newGame() {
+        questionsAsked = 0
+        correctQuestions = 0
+        questionGenerator.gameQuestions = []
+        questionGenerator.createQuestionPool()
+        indexOfSelectedQuestion = 0
+        displayQuestion()
     }
     
     func loadNextRound(delay seconds: Int) {
@@ -102,28 +114,26 @@ class ViewController: UIViewController {
         // Increment the questions asked counter
         questionsAsked += 1
         
-        let selectedQuestionDict = trivia[indexOfSelectedQuestion]
-        let correctAnswer = selectedQuestionDict["Answer"]
+        let selectedQuestion = questionGenerator.gameQuestions[indexOfSelectedQuestion]
+        let correctAnswer = selectedQuestion.correctAnswer
         
-        if (sender === trueButton &&  correctAnswer == "True") || (sender === falseButton && correctAnswer == "False") {
+        if (sender.currentTitle == correctAnswer) {
             correctQuestions += 1
             questionField.text = "Correct!"
         } else {
             questionField.text = "Sorry, wrong answer!"
         }
         
-        loadNextRound(delay: 2)
+        loadNextRound(delay: 1)
     }
     
     
     @IBAction func playAgain(_ sender: UIButton) {
         // Show the answer buttons
-        trueButton.isHidden = false
-        falseButton.isHidden = false
+        button1.isHidden = false
+        button2.isHidden = false
         
-        questionsAsked = 0
-        correctQuestions = 0
-        nextRound()
+        newGame()
     }
     
 
