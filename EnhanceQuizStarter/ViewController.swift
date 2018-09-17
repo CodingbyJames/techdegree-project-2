@@ -21,18 +21,14 @@ class ViewController: UIViewController {
     
     var gameSound: SystemSoundID = 0
     
-    let trivia: [[String : String]] = [
-        ["Question": "Only female koalas can whistle", "Answer": "False"],
-        ["Question": "Blue whales are technically whales", "Answer": "True"],
-        ["Question": "Camels are cannibalistic", "Answer": "False"],
-        ["Question": "All ducks are birds", "Answer": "True"]
-    ]
     
     // MARK: - Outlets
     
     @IBOutlet weak var questionField: UILabel!
     @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var button2: UIButton!
+    @IBOutlet weak var button3: UIButton!
+    @IBOutlet weak var button4: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
 
     override func viewDidLoad() {
@@ -59,10 +55,10 @@ class ViewController: UIViewController {
     
     func displayQuestion() {
         questionField.text = questionGenerator.gameQuestions[indexOfSelectedQuestion].question
-        button1.setTitle(questionGenerator.gameQuestions[indexOfSelectedQuestion].possibleAnswers[1], for: UIControlState.normal)
-        print(questionGenerator.gameQuestions[indexOfSelectedQuestion].possibleAnswers[1])
-        button2.setTitle(questionGenerator.gameQuestions[indexOfSelectedQuestion].possibleAnswers[2], for: UIControlState.normal)
-        print(questionGenerator.gameQuestions[indexOfSelectedQuestion].possibleAnswers[2])
+        button1.setTitle(questionGenerator.gameQuestions[indexOfSelectedQuestion].possibleAnswers[0], for: UIControlState.normal)
+        button2.setTitle(questionGenerator.gameQuestions[indexOfSelectedQuestion].possibleAnswers[1], for: UIControlState.normal)
+        button3.setTitle(questionGenerator.gameQuestions[indexOfSelectedQuestion].possibleAnswers[2], for: UIControlState.normal)
+        button4.setTitle(questionGenerator.gameQuestions[indexOfSelectedQuestion].possibleAnswers[3], for: UIControlState.normal)
         playAgainButton.isHidden = true
     }
     
@@ -70,6 +66,8 @@ class ViewController: UIViewController {
         // Hide the answer buttons
         button1.isHidden = true
         button2.isHidden = true
+        button3.isHidden = true
+        button4.isHidden = true
         
         // Display play again button
         playAgainButton.isHidden = false
@@ -132,6 +130,8 @@ class ViewController: UIViewController {
         // Show the answer buttons
         button1.isHidden = false
         button2.isHidden = false
+        button3.isHidden = false
+        button4.isHidden = false
         
         newGame()
     }
